@@ -1,0 +1,254 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: cart.spec.js >> Verify Product in Cart
+- Location: tests\cart.spec.js:6:5
+
+# Error details
+
+```
+Error: expect(received).toBeGreaterThan(expected)
+
+Expected: > 0
+Received:   0
+
+Call Log:
+- Timeout 15000ms exceeded while waiting on the predicate
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - text:             
+  - navigation [ref=e2]:
+    - link "PRODUCT STORE" [ref=e3] [cursor=pointer]:
+      - /url: index.html
+      - img [ref=e4]
+      - text: PRODUCT STORE
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Home (current)" [ref=e8] [cursor=pointer]:
+          - /url: index.html
+          - text: Home
+          - generic [ref=e9]: (current)
+      - listitem [ref=e10]:
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e12]:
+        - link "About us" [ref=e13] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e14]:
+        - link "Cart" [ref=e15] [cursor=pointer]:
+          - /url: cart.html
+      - listitem [ref=e16]:
+        - link "Log in" [ref=e17] [cursor=pointer]:
+          - /url: "#"
+      - listitem
+      - listitem
+      - listitem [ref=e18]:
+        - link "Sign up" [ref=e19] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=e21]:
+      - list [ref=e22]:
+        - listitem [ref=e23] [cursor=pointer]
+        - listitem [ref=e24] [cursor=pointer]
+        - listitem [ref=e25] [cursor=pointer]
+      - img "First slide" [ref=e28]
+      - button "Previous" [ref=e29] [cursor=pointer]:
+        - generic [ref=e31]: Previous
+      - button "Next" [ref=e32] [cursor=pointer]:
+        - generic [ref=e34]: Next
+  - generic [ref=e36]:
+    - generic [ref=e38]:
+      - link "CATEGORIES" [ref=e39] [cursor=pointer]:
+        - /url: ""
+      - link "Phones" [ref=e40] [cursor=pointer]:
+        - /url: "#"
+      - link "Laptops" [ref=e41] [cursor=pointer]:
+        - /url: "#"
+      - link "Monitors" [ref=e42] [cursor=pointer]:
+        - /url: "#"
+    - list [ref=e45]:
+      - listitem [ref=e46]:
+        - button "Previous" [ref=e47]
+      - listitem [ref=e48]:
+        - button "Next" [ref=e49] [cursor=pointer]
+  - generic [ref=e51]:
+    - generic [ref=e54]:
+      - heading "About Us" [level=4] [ref=e55]
+      - paragraph [ref=e56]: We believe performance needs to be validated at every stage of the software development cycle and our open source compatible, massively scalable platform makes that a reality.
+    - generic [ref=e59]:
+      - heading "Get in Touch" [level=4] [ref=e60]
+      - paragraph [ref=e61]: "Address: 2390 El Camino Real"
+      - paragraph [ref=e62]: "Phone: +440 123456"
+      - paragraph [ref=e63]: "Email: demo@blazemeter.com"
+    - heading "PRODUCT STORE" [level=4] [ref=e67]:
+      - img [ref=e68]
+      - text: PRODUCT STORE
+  - contentinfo [ref=e69]:
+    - paragraph [ref=e70]: Copyright © Product Store
+```
+
+# Test source
+
+```ts
+  1   | import { BasePage } from "./BasePage";
+  2   | import { expect } from "@playwright/test";
+  3   | 
+  4   | export class HomePage extends BasePage {
+  5   | 
+  6   |     constructor(page) {
+  7   |         super(page);
+  8   | 
+  9   |         // Navigation Menu
+  10  |         this.homeLink = page.locator('//a[contains(text(),"Home")]');
+  11  |         this.contactLink = page.getByRole('link', { name: 'Contact' });
+  12  | this.aboutUsLink = page.getByRole('link', { name: 'About us' });
+  13  |         this.loginLink = page.getByRole('link', { name: 'Log in' });
+  14  | this.signupLink = page.getByRole('link', { name: 'Sign up' });
+  15  | this.cartLink = page.getByRole('link', { name: 'Cart' });
+  16  |         this.logoutLink = page.locator('#logout2');
+  17  | 
+  18  |         // Logo
+  19  |         this.logo = page.locator('#nava');
+  20  | 
+  21  |         // Categories
+  22  |         this.categoryPhones = page.locator('//a[text()="Phones"]');
+  23  |         this.categoryLaptops = page.locator('//a[text()="Laptops"]');
+  24  |         this.categoryMonitors = page.locator('//a[text()="Monitors"]');
+  25  | 
+  26  |         // Carousel
+  27  |         this.nextButton = page.locator('.carousel-control-next');
+  28  |         this.previousButton = page.locator('.carousel-control-prev');
+  29  |         this.activeCarouselItem = page.locator('.carousel-item.active');
+  30  | 
+  31  |         // Product Cards
+  32  |         this.products = page.locator('.card');
+  33  | 
+  34  |         // Contact Modal ("New message")
+  35  |         this.contactModal = page.locator('#exampleModal');
+  36  |         this.contactCloseButton = page.locator('#exampleModal button:text("Close")');
+  37  | 
+  38  |         // About Us Modal (video)
+  39  |         this.aboutUsModal = page.locator('#videoModal');
+  40  |         this.aboutUsCloseButton = page.locator('#videoModal button:text("Close")');
+  41  |     }
+  42  | 
+  43  |     // Open Application
+  44  |    async openApplication() {
+  45  |     await this.navigate("/");
+  46  | 
+  47  |     await expect(this.logo).toBeVisible();
+  48  | 
+  49  |     await expect(async () => {
+  50  |         const count = await this.page.locator(".card-title a").count();
+  51  |         expect(count).toBeGreaterThan(0);
+> 52  |     }).toPass({
+      |        ^ Error: expect(received).toBeGreaterThan(expected)
+  53  |         timeout: 15000
+  54  |     });
+  55  | }
+  56  |     // Verify Home Page
+  57  |     async verifyHomePage() {
+  58  |         await expect(this.logo).toBeVisible();
+  59  |         await expect(this.homeLink).toBeVisible();
+  60  |     }
+  61  | 
+  62  |     // Navigation
+  63  |     async clickLogin() {
+  64  |         await this.click(this.loginLink);
+  65  |     }
+  66  | 
+  67  |     async clickSignup() {
+  68  |         await this.click(this.signupLink);
+  69  |     }
+  70  | 
+  71  |     async clickCart() {
+  72  |     await this.click(this.cartLink);
+  73  | }
+  74  | 
+  75  |    async clickContact() {
+  76  |     await this.page.waitForLoadState("domcontentloaded");
+  77  |     await this.click(this.contactLink);
+  78  |     await expect(this.contactModal).toBeVisible();
+  79  | }
+  80  | 
+  81  |     async closeContact() {
+  82  |         await this.click(this.contactCloseButton);
+  83  |         await expect(this.contactModal).toBeHidden();
+  84  |     }
+  85  | 
+  86  |     async clickAboutUs() {
+  87  |     await this.page.waitForLoadState("domcontentloaded");
+  88  |     await this.click(this.aboutUsLink);
+  89  |     await expect(this.aboutUsModal).toBeVisible();
+  90  | }
+  91  | 
+  92  |     async closeAboutUs() {
+  93  |         await this.click(this.aboutUsCloseButton);
+  94  |         await expect(this.aboutUsModal).toBeHidden();
+  95  |     }
+  96  | 
+  97  |     async clickLogout() {
+  98  |         await this.click(this.logoutLink);
+  99  |     }
+  100 | 
+  101 |     // Categories
+  102 |     async selectPhones() {
+  103 |         await this.click(this.categoryPhones);
+  104 |         await expect(this.products.first()).toBeVisible();
+  105 |     }
+  106 | 
+  107 |     async selectLaptops() {
+  108 |         await this.click(this.categoryLaptops);
+  109 |         await expect(this.products.first()).toBeVisible();
+  110 |     }
+  111 | 
+  112 |     async selectMonitors() {
+  113 |         await this.click(this.categoryMonitors);
+  114 |         await expect(this.products.first()).toBeVisible();
+  115 |     }
+  116 | 
+  117 |     // Carousel
+  118 |     async getActiveSlideImageSrc() {
+  119 |         return await this.activeCarouselItem.locator('img').getAttribute('src');
+  120 |     }
+  121 | 
+  122 |     async clickNext() {
+  123 |         const before = await this.getActiveSlideImageSrc();
+  124 |         await this.click(this.nextButton);
+  125 |         await expect
+  126 |             .poll(() => this.getActiveSlideImageSrc())
+  127 |             .not.toBe(before);
+  128 |     }
+  129 | 
+  130 |     async clickPrevious() {
+  131 |         const before = await this.getActiveSlideImageSrc();
+  132 |         await this.click(this.previousButton);
+  133 |         await expect
+  134 |             .poll(() => this.getActiveSlideImageSrc())
+  135 |             .not.toBe(before);
+  136 |     }
+  137 | 
+  138 |     // Open Product by Name
+  139 |     async openProduct(productName) {
+  140 |         await this.page.locator(`//a[text()="${productName}"]`).click();
+  141 |     }
+  142 | 
+  143 |     // Verify Product Exists
+  144 |     async verifyProduct(productName) {
+  145 |         await expect(this.page.locator(`//a[text()="${productName}"]`)).toBeVisible();
+  146 |     }
+  147 | 
+  148 |     // Get Number of Products
+  149 |     async getProductCount() {
+  150 |         return await this.products.count();
+  151 |     }
+  152 | }
+```

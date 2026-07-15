@@ -1,0 +1,38 @@
+[
+  {
+    "productName": "Samsung galaxy s6",
+    "price": "$360"
+  },
+  {
+    "productName": "Nokia lumia 1520",
+    "price": "$820"
+  },
+  {
+    "productName": "Nexus 6",
+    "price": "$650"
+  },
+  {
+    "productName": "Samsung galaxy s7",
+    "price": "$800"
+  },
+  {
+    "productName": "Sony vaio i5",
+    "price": "$790"
+  },
+  {
+    "productName": "Sony vaio i7",
+    "price": "$790"
+  },
+  {
+    "productName": "MacBook air",
+    "price": "$700"
+  },
+  {
+    "productName": "Apple monitor 24",
+    "price": "$400"
+  },
+  {
+    "productName": "ASUS Full HD",
+    "price": "$230"
+  }
+]

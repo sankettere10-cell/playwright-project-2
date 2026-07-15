@@ -1,0 +1,4 @@
+Alert : Product added
+Current URL: https://www.demoblaze.com/cart.html
+Rows: 1
+Id: 1461957Amount: 360 USDCard Number: 4111111111111111Name: Sanket TereDate: 9/6/2026

@@ -1,0 +1,302 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: smoke.spec.js >> End-to-End Purchase Flow
+- Location: tests\smoke.spec.js:11:5
+
+# Error details
+
+```
+TimeoutError: page.waitForFunction: Timeout 15000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - dialog "Log in" [active] [ref=e2]:
+    - document [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - heading "Log in" [level=5] [ref=e6]
+          - button "Close" [ref=e7] [cursor=pointer]: ×
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: "Username:"
+            - textbox [ref=e12]: sank123
+          - generic [ref=e13]:
+            - generic [ref=e14]: "Password:"
+            - textbox [ref=e15]: Test@123
+        - generic [ref=e17]:
+          - button "Close" [ref=e18]
+          - button "Log in" [ref=e19]
+  - text:            X 
+  - navigation [ref=e20]:
+    - link "PRODUCT STORE" [ref=e21]:
+      - /url: index.html
+      - img [ref=e22]
+      - text: PRODUCT STORE
+    - list [ref=e24]:
+      - listitem [ref=e25]:
+        - link "Home (current)" [ref=e26]:
+          - /url: index.html
+          - text: Home
+          - generic [ref=e27]: (current)
+      - listitem [ref=e28]:
+        - link "Contact" [ref=e29]:
+          - /url: "#"
+      - listitem [ref=e30]:
+        - link "About us" [ref=e31]:
+          - /url: "#"
+      - listitem [ref=e32]:
+        - link "Cart" [ref=e33]:
+          - /url: cart.html
+      - listitem [ref=e34]:
+        - link "Log in" [ref=e35]:
+          - /url: "#"
+      - listitem
+      - listitem
+      - listitem [ref=e36]:
+        - link "Sign up" [ref=e37]:
+          - /url: "#"
+    - generic [ref=e39]:
+      - list [ref=e40]:
+        - listitem [ref=e41] [cursor=pointer]
+        - listitem [ref=e42] [cursor=pointer]
+        - listitem [ref=e43] [cursor=pointer]
+      - generic [ref=e44]:
+        - img "First slide" [ref=e46]
+        - img "Second slide" [ref=e48]
+      - button "Previous" [ref=e49] [cursor=pointer]:
+        - generic [ref=e51]: Previous
+      - button "Next" [ref=e52] [cursor=pointer]:
+        - generic [ref=e54]: Next
+  - generic [ref=e56]:
+    - generic [ref=e58]:
+      - link "CATEGORIES" [ref=e59]:
+        - /url: ""
+      - link "Phones" [ref=e60]:
+        - /url: "#"
+      - link "Laptops" [ref=e61]:
+        - /url: "#"
+      - link "Monitors" [ref=e62]:
+        - /url: "#"
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - link [ref=e67]:
+            - /url: prod.html?idp_=1
+          - generic [ref=e68]:
+            - heading "Samsung galaxy s6" [level=4] [ref=e69]:
+              - link "Samsung galaxy s6" [ref=e70]:
+                - /url: prod.html?idp_=1
+            - heading "$360" [level=5] [ref=e71]
+            - paragraph [ref=e72]: The Samsung Galaxy S6 is powered by 1.5GHz octa-core Samsung Exynos 7420 processor and it comes with 3GB of RAM. The phone packs 32GB of internal storage cannot be expanded.
+        - generic [ref=e74]:
+          - link [ref=e75]:
+            - /url: prod.html?idp_=2
+          - generic [ref=e76]:
+            - heading "Nokia lumia 1520" [level=4] [ref=e77]:
+              - link "Nokia lumia 1520" [ref=e78]:
+                - /url: prod.html?idp_=2
+            - heading "$820" [level=5] [ref=e79]
+            - paragraph [ref=e80]: The Nokia Lumia 1520 is powered by 2.2GHz quad-core Qualcomm Snapdragon 800 processor and it comes with 2GB of RAM.
+        - generic [ref=e82]:
+          - link [ref=e83]:
+            - /url: prod.html?idp_=3
+          - generic [ref=e84]:
+            - heading "Nexus 6" [level=4] [ref=e85]:
+              - link "Nexus 6" [ref=e86]:
+                - /url: prod.html?idp_=3
+            - heading "$650" [level=5] [ref=e87]
+            - paragraph [ref=e88]: The Motorola Google Nexus 6 is powered by 2.7GHz quad-core Qualcomm Snapdragon 805 processor and it comes with 3GB of RAM.
+        - generic [ref=e90]:
+          - link [ref=e91]:
+            - /url: prod.html?idp_=4
+          - generic [ref=e92]:
+            - heading "Samsung galaxy s7" [level=4] [ref=e93]:
+              - link "Samsung galaxy s7" [ref=e94]:
+                - /url: prod.html?idp_=4
+            - heading "$800" [level=5] [ref=e95]
+            - paragraph [ref=e96]: The Samsung Galaxy S7 is powered by 1.6GHz octa-core it comes with 4GB of RAM. The phone packs 32GB of internal storage that can be expanded up to 200GB via a microSD card.
+        - generic [ref=e98]:
+          - link [ref=e99]:
+            - /url: prod.html?idp_=5
+          - generic [ref=e100]:
+            - heading "Iphone 6 32gb" [level=4] [ref=e101]:
+              - link "Iphone 6 32gb" [ref=e102]:
+                - /url: prod.html?idp_=5
+            - heading "$790" [level=5] [ref=e103]
+            - paragraph [ref=e104]: It comes with 1GB of RAM. The phone packs 16GB of internal storage cannot be expanded. As far as the cameras are concerned, the Apple iPhone 6 packs a 8-megapixel primary camera on the rear and a 1.2-megapixel front shooter for selfies.
+        - generic [ref=e106]:
+          - link [ref=e107]:
+            - /url: prod.html?idp_=6
+          - generic [ref=e108]:
+            - heading "Sony xperia z5" [level=4] [ref=e109]:
+              - link "Sony xperia z5" [ref=e110]:
+                - /url: prod.html?idp_=6
+            - heading "$320" [level=5] [ref=e111]
+            - paragraph [ref=e112]: Sony Xperia Z5 Dual smartphone was launched in September 2015. The phone comes with a 5.20-inch touchscreen display with a resolution of 1080 pixels by 1920 pixels at a PPI of 424 pixels per inch.
+        - generic [ref=e114]:
+          - link [ref=e115]:
+            - /url: prod.html?idp_=7
+          - generic [ref=e116]:
+            - heading "HTC One M9" [level=4] [ref=e117]:
+              - link "HTC One M9" [ref=e118]:
+                - /url: prod.html?idp_=7
+            - heading "$700" [level=5] [ref=e119]
+            - paragraph [ref=e120]: The HTC One M9 is powered by 1.5GHz octa-core Qualcomm Snapdragon 810 processor and it comes with 3GB of RAM. The phone packs 32GB of internal storage that can be expanded up to 128GB via a microSD card.
+        - generic [ref=e122]:
+          - link [ref=e123]:
+            - /url: prod.html?idp_=8
+          - generic [ref=e124]:
+            - heading "Sony vaio i5" [level=4] [ref=e125]:
+              - link "Sony vaio i5" [ref=e126]:
+                - /url: prod.html?idp_=8
+            - heading "$790" [level=5] [ref=e127]
+            - paragraph [ref=e128]: Sony is so confident that the VAIO S is a superior ultraportable laptop that the company proudly compares the notebook to Apple's 13-inch MacBook Pro. And in a lot of ways this notebook is better, thanks to a lighter weight.
+        - generic [ref=e130]:
+          - link [ref=e131]:
+            - /url: prod.html?idp_=9
+          - generic [ref=e132]:
+            - heading "Sony vaio i7" [level=4] [ref=e133]:
+              - link "Sony vaio i7" [ref=e134]:
+                - /url: prod.html?idp_=9
+            - heading "$790" [level=5] [ref=e135]
+            - paragraph [ref=e136]: REVIEW Sony is so confident that the VAIO S is a superior ultraportable laptop that the company proudly compares the notebook to Apple's 13-inch MacBook Pro. And in a lot of ways this notebook is better, thanks to a lighter weight, higher-resolution display, more storage space, and a Blu-ray drive.
+      - list [ref=e138]:
+        - listitem [ref=e139]:
+          - button "Previous" [ref=e140]
+        - listitem [ref=e141]:
+          - button "Next" [ref=e142] [cursor=pointer]
+  - generic [ref=e144]:
+    - generic [ref=e147]:
+      - heading "About Us" [level=4] [ref=e148]
+      - paragraph [ref=e149]: We believe performance needs to be validated at every stage of the software development cycle and our open source compatible, massively scalable platform makes that a reality.
+    - generic [ref=e152]:
+      - heading "Get in Touch" [level=4] [ref=e153]
+      - paragraph [ref=e154]: "Address: 2390 El Camino Real"
+      - paragraph [ref=e155]: "Phone: +440 123456"
+      - paragraph [ref=e156]: "Email: demo@blazemeter.com"
+    - heading "PRODUCT STORE" [level=4] [ref=e160]:
+      - img [ref=e161]
+      - text: PRODUCT STORE
+  - contentinfo [ref=e162]:
+    - paragraph [ref=e163]: Copyright © Product Store
+```
+
+# Test source
+
+```ts
+  1   | import { BasePage } from "./BasePage";
+  2   | import { expect } from "@playwright/test";
+  3   | 
+  4   | export class LoginPage extends BasePage {
+  5   | 
+  6   |     constructor(page) {
+  7   |         super(page);
+  8   | 
+  9   |         // Login Menu
+  10  |         this.loginLink = page.locator('#login2');
+  11  |         this.logoutLink = page.locator('#logout2');
+  12  |         this.welcomeUser = page.locator('#nameofuser');
+  13  | 
+  14  |         // Login Modal
+  15  |         this.loginModal = page.locator('#logInModal');
+  16  |         this.username = page.locator('#loginusername');
+  17  |         this.password = page.locator('#loginpassword');
+  18  |       this.loginButton = page
+  19  |     .locator('#logInModal')
+  20  |     .getByRole('button', { name: 'Log in' });
+  21  |         this.closeButton = page.locator('//div[@id="logInModal"]//button[text()="Close"]');
+  22  |     }
+  23  | 
+  24  |     // Open Login Popup
+  25  |     async openLoginPopup() {
+  26  |         await this.click(this.loginLink);
+  27  |         await expect(this.loginModal).toBeVisible();
+  28  |     }
+  29  | 
+  30  |     // Enter Username
+  31  |     async enterUsername(username) {
+  32  |         await this.fill(this.username, username);
+  33  |     }
+  34  | 
+  35  |     // Enter Password
+  36  |     async enterPassword(password) {
+  37  |         await this.fill(this.password, password);
+  38  |     }
+  39  | 
+  40  |     // Click Login Button
+  41  |     async clickLoginButton() {
+  42  | 
+  43  |     await this.loginButton.click();
+  44  | 
+  45  |     await this.page.waitForFunction(() => {
+  46  |         const e = document.querySelector("#nameofuser");
+  47  |         return e && e.textContent.trim() !== "";
+  48  |     });
+  49  | }
+  50  |     // Complete Login
+  51  |    async login(username, password) {
+  52  | 
+  53  |     await this.openLoginPopup();
+  54  | 
+  55  |     await this.username.fill(username);
+  56  |     await this.password.fill(password);
+  57  | 
+  58  |     console.log("Username:", await this.username.inputValue());
+  59  |     console.log("Password:", await this.password.inputValue());
+  60  | 
+  61  |     await this.loginButton.click();
+  62  | 
+  63  | await this.page.waitForTimeout(3000);
+  64  | }
+  65  | 
+  66  |     // Verify Successful Login
+  67  |    async verifyLogin(username) {
+  68  | 
+> 69  |     await this.page.waitForFunction(() => {
+      |                     ^ TimeoutError: page.waitForFunction: Timeout 15000ms exceeded.
+  70  |         const e = document.querySelector("#nameofuser");
+  71  |         return e && e.textContent.trim() !== "";
+  72  |     });
+  73  | 
+  74  |     await expect(this.welcomeUser).toContainText(username, {
+  75  |         timeout: 20000
+  76  |     });
+  77  | }
+  78  |     // Logout
+  79  |     async logout() {
+  80  |         await this.click(this.logoutLink);
+  81  |     }
+  82  | 
+  83  |     // Verify Logout
+  84  |     async verifyLogout() {
+  85  |         await expect(this.loginLink).toBeVisible();
+  86  |     }
+  87  | 
+  88  |     // Close Login Popup
+  89  |     async closeLoginPopup() {
+  90  |         await this.click(this.closeButton);
+  91  |     }
+  92  | 
+  93  |     // Verify Login Popup
+  94  |     async verifyLoginPopup() {
+  95  |         await expect(this.loginModal).toBeVisible();
+  96  |     }
+  97  | 
+  98  |     // Handle Invalid Login Alert
+  99  |     // async acceptLoginAlert() {
+  100 |     //     this.page.once('dialog', async dialog => {
+  101 |     //         console.log("Alert Message :", dialog.message());
+  102 |     //         await dialog.accept();
+  103 |     //     });
+  104 |     //}
+  105 | }
+```

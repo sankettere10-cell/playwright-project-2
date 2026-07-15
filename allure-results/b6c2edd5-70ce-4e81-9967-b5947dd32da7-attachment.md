@@ -1,0 +1,258 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: smoke.spec.js >> End-to-End Purchase Flow
+- Location: tests\smoke.spec.js:11:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator:  locator('#nameofuser')
+Expected: visible
+Received: hidden
+Timeout:  10000ms
+
+Call log:
+  - Expect "toBeVisible" with timeout 10000ms
+  - waiting for locator('#nameofuser')
+    21 × locator resolved to <a href="#" id="nameofuser" class="nav-link"></a>
+       - unexpected value "hidden"
+
+```
+
+```yaml
+- dialog "Log in":
+  - document:
+    - heading "Log in" [level=5]
+    - button "Close"
+    - text: "Username:"
+    - textbox: sank123
+    - text: "Password:"
+    - textbox
+    - button "Close"
+    - button "Log in"
+- navigation:
+  - link "PRODUCT STORE":
+    - /url: index.html
+    - img
+    - text: PRODUCT STORE
+  - list:
+    - listitem:
+      - link "Home (current)":
+        - /url: index.html
+    - listitem:
+      - link "Contact":
+        - /url: "#"
+    - listitem:
+      - link "About us":
+        - /url: "#"
+    - listitem:
+      - link "Cart":
+        - /url: cart.html
+    - listitem:
+      - link "Log in":
+        - /url: "#"
+    - listitem
+    - listitem
+    - listitem:
+      - link "Sign up":
+        - /url: "#"
+  - list:
+    - listitem
+    - listitem
+    - listitem
+  - img "Third slide"
+  - button "Previous"
+  - button "Next"
+- link "CATEGORIES":
+  - /url: ""
+- link "Phones":
+  - /url: "#"
+- link "Laptops":
+  - /url: "#"
+- link "Monitors":
+  - /url: "#"
+- link:
+  - /url: prod.html?idp_=1
+- heading "Samsung galaxy s6" [level=4]:
+  - link "Samsung galaxy s6":
+    - /url: prod.html?idp_=1
+- heading "$360" [level=5]
+- paragraph: The Samsung Galaxy S6 is powered by 1.5GHz octa-core Samsung Exynos 7420 processor and it comes with 3GB of RAM. The phone packs 32GB of internal storage cannot be expanded.
+- link:
+  - /url: prod.html?idp_=2
+- heading "Nokia lumia 1520" [level=4]:
+  - link "Nokia lumia 1520":
+    - /url: prod.html?idp_=2
+- heading "$820" [level=5]
+- paragraph: The Nokia Lumia 1520 is powered by 2.2GHz quad-core Qualcomm Snapdragon 800 processor and it comes with 2GB of RAM.
+- link:
+  - /url: prod.html?idp_=3
+- heading "Nexus 6" [level=4]:
+  - link "Nexus 6":
+    - /url: prod.html?idp_=3
+- heading "$650" [level=5]
+- paragraph: The Motorola Google Nexus 6 is powered by 2.7GHz quad-core Qualcomm Snapdragon 805 processor and it comes with 3GB of RAM.
+- link:
+  - /url: prod.html?idp_=4
+- heading "Samsung galaxy s7" [level=4]:
+  - link "Samsung galaxy s7":
+    - /url: prod.html?idp_=4
+- heading "$800" [level=5]
+- paragraph: The Samsung Galaxy S7 is powered by 1.6GHz octa-core it comes with 4GB of RAM. The phone packs 32GB of internal storage that can be expanded up to 200GB via a microSD card.
+- link:
+  - /url: prod.html?idp_=5
+- heading "Iphone 6 32gb" [level=4]:
+  - link "Iphone 6 32gb":
+    - /url: prod.html?idp_=5
+- heading "$790" [level=5]
+- paragraph: It comes with 1GB of RAM. The phone packs 16GB of internal storage cannot be expanded. As far as the cameras are concerned, the Apple iPhone 6 packs a 8-megapixel primary camera on the rear and a 1.2-megapixel front shooter for selfies.
+- link:
+  - /url: prod.html?idp_=6
+- heading "Sony xperia z5" [level=4]:
+  - link "Sony xperia z5":
+    - /url: prod.html?idp_=6
+- heading "$320" [level=5]
+- paragraph: Sony Xperia Z5 Dual smartphone was launched in September 2015. The phone comes with a 5.20-inch touchscreen display with a resolution of 1080 pixels by 1920 pixels at a PPI of 424 pixels per inch.
+- link:
+  - /url: prod.html?idp_=7
+- heading "HTC One M9" [level=4]:
+  - link "HTC One M9":
+    - /url: prod.html?idp_=7
+- heading "$700" [level=5]
+- paragraph: The HTC One M9 is powered by 1.5GHz octa-core Qualcomm Snapdragon 810 processor and it comes with 3GB of RAM. The phone packs 32GB of internal storage that can be expanded up to 128GB via a microSD card.
+- link:
+  - /url: prod.html?idp_=8
+- heading "Sony vaio i5" [level=4]:
+  - link "Sony vaio i5":
+    - /url: prod.html?idp_=8
+- heading "$790" [level=5]
+- paragraph: Sony is so confident that the VAIO S is a superior ultraportable laptop that the company proudly compares the notebook to Apple's 13-inch MacBook Pro. And in a lot of ways this notebook is better, thanks to a lighter weight.
+- link:
+  - /url: prod.html?idp_=9
+- heading "Sony vaio i7" [level=4]:
+  - link "Sony vaio i7":
+    - /url: prod.html?idp_=9
+- heading "$790" [level=5]
+- paragraph: REVIEW Sony is so confident that the VAIO S is a superior ultraportable laptop that the company proudly compares the notebook to Apple's 13-inch MacBook Pro. And in a lot of ways this notebook is better, thanks to a lighter weight, higher-resolution display, more storage space, and a Blu-ray drive.
+- list:
+  - listitem:
+    - button "Previous"
+  - listitem:
+    - button "Next"
+- heading "About Us" [level=4]
+- paragraph: We believe performance needs to be validated at every stage of the software development cycle and our open source compatible, massively scalable platform makes that a reality.
+- heading "Get in Touch" [level=4]
+- paragraph: "Address: 2390 El Camino Real"
+- paragraph: "Phone: +440 123456"
+- paragraph: "Email: demo@blazemeter.com"
+- heading "PRODUCT STORE" [level=4]:
+  - img
+  - text: PRODUCT STORE
+- contentinfo:
+  - paragraph: Copyright © Product Store
+```
+
+# Test source
+
+```ts
+  1  | import { BasePage } from "./BasePage";
+  2  | import { expect } from "@playwright/test";
+  3  | 
+  4  | export class LoginPage extends BasePage {
+  5  | 
+  6  |     constructor(page) {
+  7  |         super(page);
+  8  | 
+  9  |         // Login Menu
+  10 |         this.loginLink = page.locator('#login2');
+  11 |         this.logoutLink = page.locator('#logout2');
+  12 |         this.welcomeUser = page.locator('#nameofuser');
+  13 | 
+  14 |         // Login Modal
+  15 |         this.loginModal = page.locator('#logInModal');
+  16 |         this.username = page.locator('#loginusername');
+  17 |         this.password = page.locator('#loginpassword');
+  18 |       this.loginButton = page
+  19 |     .locator('#logInModal')
+  20 |     .getByRole('button', { name: 'Log in' });
+  21 |         this.closeButton = page.locator('//div[@id="logInModal"]//button[text()="Close"]');
+  22 |     }
+  23 | 
+  24 |     // Open Login Popup
+  25 |     async openLoginPopup() {
+  26 |         await this.click(this.loginLink);
+  27 |         await expect(this.loginModal).toBeVisible();
+  28 |     }
+  29 | 
+  30 |     // Enter Username
+  31 |     async enterUsername(username) {
+  32 |         await this.fill(this.username, username);
+  33 |     }
+  34 | 
+  35 |     // Enter Password
+  36 |     async enterPassword(password) {
+  37 |         await this.fill(this.password, password);
+  38 |     }
+  39 | 
+  40 |     // Click Login Button
+  41 |     async clickLoginButton() {
+  42 |     await expect(this.loginButton).toBeVisible();
+  43 |     await this.loginButton.click();
+  44 | }
+  45 |     // Complete Login
+  46 |    async login(username, password) {
+  47 | 
+  48 |     await this.openLoginPopup();
+  49 | 
+  50 |     await this.username.fill(username);
+  51 |     await this.password.fill(password);
+  52 | 
+  53 |     console.log("Username:", await this.username.inputValue());
+  54 |     console.log("Password:", await this.password.inputValue());
+  55 | 
+  56 |     await this.loginButton.click();
+  57 | }
+  58 | 
+  59 |     // Verify Successful Login
+  60 |    async verifyLogin(username) {
+> 61 |     await expect(this.welcomeUser).toBeVisible();
+     |                                    ^ Error: expect(locator).toBeVisible() failed
+  62 |     await expect(this.welcomeUser).toHaveText(`Welcome ${username}`);
+  63 | }
+  64 |     // Logout
+  65 |     async logout() {
+  66 |         await this.click(this.logoutLink);
+  67 |     }
+  68 | 
+  69 |     // Verify Logout
+  70 |     async verifyLogout() {
+  71 |         await expect(this.loginLink).toBeVisible();
+  72 |     }
+  73 | 
+  74 |     // Close Login Popup
+  75 |     async closeLoginPopup() {
+  76 |         await this.click(this.closeButton);
+  77 |     }
+  78 | 
+  79 |     // Verify Login Popup
+  80 |     async verifyLoginPopup() {
+  81 |         await expect(this.loginModal).toBeVisible();
+  82 |     }
+  83 | 
+  84 |     // Handle Invalid Login Alert
+  85 |     // async acceptLoginAlert() {
+  86 |     //     this.page.once('dialog', async dialog => {
+  87 |     //         console.log("Alert Message :", dialog.message());
+  88 |     //         await dialog.accept();
+  89 |     //     });
+  90 |     //}
+  91 | }
+```

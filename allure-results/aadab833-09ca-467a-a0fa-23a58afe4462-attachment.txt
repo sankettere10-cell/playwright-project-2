@@ -1,0 +1,4 @@
+Username: sank123
+Password: Test@123
+Alert : Product added.
+Id: 997446Amount: 360 USDCard Number: 4111111111111111Name: Sanket TereDate: 9/6/2026
